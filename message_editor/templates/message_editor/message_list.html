@@ -1,0 +1,9 @@
+{% extends 'message_editor/base.html' %}
+{% block content %}
+{% for i in user_data[0] %}
+	<div class="row">
+		{{ i }}
+	</div>
+{% endfor %}
+
+{% endblock %}
