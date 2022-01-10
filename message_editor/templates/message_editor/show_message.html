@@ -1,0 +1,26 @@
+{% extends 'message_editor/base.html' %}
+{% block content %}
+
+<div class = "card">
+	<div class = "card-header">
+		Title: {{message.title }}
+		</div>
+	<div class ="card-body">
+<h5 class = card-title>
+
+
+</h5>
+
+	</div>
+<p class = card-text>
+<ul>
+
+
+
+	        {{ message.body }}
+
+			</ul>
+</p>
+</div>
+
+{% endblock %}

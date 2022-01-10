@@ -12,6 +12,9 @@ def show_data(request):
     data = Message.objects.all()
     return render(request,'message_editor/message_list.html', {'data': data} )
 
+def show_message(request, id):
+    message = Message.objects.get(pk = id)
+    return render(request, 'message_editor/show_message.html', {'message': message})
 
 class CreateMessage(generic.edit.CreateView):
 

@@ -3,11 +3,10 @@
 
 <ul>
 	{% for message in data%}
+            <center>
 
-			<li>{{ message.id }}</li>
-	        <li>{{ message.userId }}</li>
-	        <li>{{ message.title }}</li>
-	        <li>{{ message.body }}</li>
+	<a href="{% url 'show-message' message.id %}">{{message.title}}</a><br/>
+			</center>
 		{% endfor %}
 			</ul>
 
