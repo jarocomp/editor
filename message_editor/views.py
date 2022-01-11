@@ -12,6 +12,15 @@ def show_data(request):
     data = Message.objects.all()
     return render(request,'message_editor/message_list.html', {'data': data} )
 
+def search_message(request):
+    if request.method== "POST":
+        searched = request.POST['searched']
+        messages = Message.objects.filter(title__contains=searched)
+        return render(request,'message_editor/search_message.html', {'searched':searched, 'messages': messages} )
+    else:
+        return render(request, 'message_editor/search_message.html', {})
+
+
 def show_message(request, id):
     message = Message.objects.get(pk = id)
     return render(request, 'message_editor/show_message.html', {'message': message})
