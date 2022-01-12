@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from django.views import generic
 from .models import Message
 from .forms import MessageForm
@@ -12,6 +12,7 @@ def show_data(request):
     data = Message.objects.all()
     return render(request,'message_editor/message_list.html', {'data': data} )
 
+
 def search_message(request):
     if request.method== "POST":
         searched = request.POST['searched']
@@ -24,6 +25,15 @@ def search_message(request):
 def show_message(request, id):
     message = Message.objects.get(pk = id)
     return render(request, 'message_editor/show_message.html', {'message': message})
+
+def update_message(request, id):
+    message = Message.objects.get(pk = id)
+    form = MessageForm(request.POST or None, instance = message)
+    if form.is_valid():
+        form.save()
+        return redirect('messages')
+
+    return render(request, 'message_editor/update_message.html', {'message': message, 'form':form})
 
 class CreateMessage(generic.edit.CreateView):
 
