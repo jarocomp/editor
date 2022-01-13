@@ -8,7 +8,7 @@ def index(request):
     return render(request, "message_editor/message_list.html",{})
 
 
-def show_data(request):
+def show_all_messages(request):
     data = Message.objects.all()
     return render(request,'message_editor/message_list.html', {'data': data} )
 
@@ -34,6 +34,13 @@ def update_message(request, id):
         return redirect('messages')
 
     return render(request, 'message_editor/update_message.html', {'message': message, 'form':form})
+
+def delete_message(requet, id):
+    message = Message.objects.get(pk=id)
+    message.delete()
+    return  redirect('messages')
+
+
 
 class CreateMessage(generic.edit.CreateView):
 
