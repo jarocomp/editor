@@ -9,4 +9,5 @@ urlpatterns = [
    path("search_message/", views.search_message, name="search-message"),
    path('update_message/<id>', views.update_message, name='update-message'),
    path('delete_message/<id>', views.delete_message, name='delete-message'),
+   path('test_data', views.test_data, name='test-data'),
 ]

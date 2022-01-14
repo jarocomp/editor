@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from .models import Message
 from .forms import MessageForm
+import requests
 
 
 def index(request):
@@ -10,14 +11,14 @@ def index(request):
 
 def show_all_messages(request):
     data = Message.objects.all()
-    return render(request,'message_editor/message_list.html', {'data': data} )
+    return render(request,'message_editor/message_list.html', {'data': data})
 
 
 def search_message(request):
     if request.method== "POST":
         searched = request.POST['searched']
         messages = Message.objects.filter(title__contains=searched)
-        return render(request,'message_editor/search_message.html', {'searched':searched, 'messages': messages} )
+        return render(request,'message_editor/search_message.html', {'searched':searched, 'messages': messages})
     else:
         return render(request, 'message_editor/search_message.html', {})
 
@@ -35,11 +36,27 @@ def update_message(request, id):
 
     return render(request, 'message_editor/update_message.html', {'message': message, 'form':form})
 
-def delete_message(requet, id):
+def delete_message(request, id):
     message = Message.objects.get(pk=id)
     message.delete()
     return  redirect('messages')
 
+def test_data(request):
+    response = requests.get('https://jsonplaceholder.typicode.com/posts/1')
+    user_data = response.json()
+    # print(type(user_data))
+
+    #for k, v in user_data.items():
+     #   print(k)
+    data = Message(
+        id = user_data['id'],
+        userId = user_data['userId'],
+        title = user_data['title'],
+        body = user_data['body']
+
+    )
+    data.save()
+    return redirect('messages')
 
 
 class CreateMessage(generic.edit.CreateView):
