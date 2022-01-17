@@ -20,9 +20,10 @@ body {
 }
 
 
-.content {
-    margin-left: 50px;
+.container {
 
+    width: 1000px;
+    margin: 0 auto;
 }
 
 h1, h2, h3, h4 {

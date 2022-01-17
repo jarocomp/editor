@@ -4,6 +4,8 @@ from .models import Message
 from .forms import MessageForm
 import requests
 
+#pagination
+from django.core.paginator import Paginator
 
 def index(request):
     return render(request, "message_editor/message_list.html",{})
@@ -11,7 +13,10 @@ def index(request):
 
 def show_all_messages(request):
     data = Message.objects.all()
-    return render(request,'message_editor/message_list.html', {'data': data})
+    p = Paginator(Message.objects.all(),5)
+    page = request.GET.get('page')
+    message = p.get_page(page)
+    return render(request,'message_editor/message_list.html', {'data': data,'message':message})
 
 
 def search_message(request):

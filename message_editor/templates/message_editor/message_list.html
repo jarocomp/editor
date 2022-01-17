@@ -2,8 +2,8 @@
 {% block content %}
 
 <table class = table table-striped table-hover table-bordered >
-	<tr><td><h1>Messages</h1></td> <td><a href="{% url 'test-data' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a></td></tr>
-	{% for message in data%}
+	<tr><td><h1>Messages</h1></td> <td><a href="{% url 'test-data' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Load user data</a></td></tr>
+	{% for message in message%}
             <tr>
 <td>
 	<a href="{% url 'show-message' message.id %}">{{message.title}}</a><br/>
@@ -18,5 +18,25 @@
 		{% endfor %}
 
 </table>
+<br/>
+<br/>
+{{ message }}<br/>
+Has Previous: {{ message.has_previous }}<br/>
+Has Next: {{ message.has_next }}<br/>
+Current Page: {{ message.number }}<br/>
+Number of Pages: {{ message.paginator.num_pages }}<br/>
+<hr><br/><br/>
+{% if message.has_previous%}
+<a href="?page1">&laquo First</a>
+<a href="?page={{ message.previous_page_number }}">Previous</a>
+
+{% endif %}
+Page {{ message.number }} of {{ message.paginator_num_pages }}
+{% if message.has_next %}
+
+<a href="?page={{ message.next_page_number }}">next</a>
+<a href="?page={{ message.paginator.num_page }}">Last &raquo</a>
+
+{% endif %}
 
 {% endblock %}
