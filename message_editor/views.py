@@ -13,10 +13,11 @@ def index(request):
 
 def show_all_messages(request):
     data = Message.objects.all()
-    p = Paginator(Message.objects.all(),5)
+    p = Paginator(Message.objects.all(),2)
     page = request.GET.get('page')
     message = p.get_page(page)
-    return render(request,'message_editor/message_list.html', {'data': data,'message':message})
+    nums = "a" * message.paginator.num_pages
+    return render(request,'message_editor/message_list.html', {'data': data,'message':message, 'nums':nums})
 
 
 def search_message(request):

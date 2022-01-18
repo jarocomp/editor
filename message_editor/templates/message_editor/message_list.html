@@ -20,23 +20,41 @@
 </table>
 <br/>
 <br/>
+
+<!--
 {{ message }}<br/>
+
+
 Has Previous: {{ message.has_previous }}<br/>
 Has Next: {{ message.has_next }}<br/>
 Current Page: {{ message.number }}<br/>
 Number of Pages: {{ message.paginator.num_pages }}<br/>
 <hr><br/><br/>
+-->
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+
 {% if message.has_previous%}
-<a href="?page1">&laquo First</a>
-<a href="?page={{ message.previous_page_number }}">Previous</a>
+<li class="page-item"><a class="page-link" href="?page1">&laquo First</a></li>
+<li class="page-item"><a class="page-link" href="?page={{ message.previous_page_number }}">Previous</a></li>
 
 {% endif %}
-Page {{ message.number }} of {{ message.paginator_num_pages }}
+	  <!--
+      <li class="page-item disabled" ><a href="#" class="page-link">Page {{ message.number }} of {{ message.paginator_num_pages }}</a></li>
+-->
+{% for i in nums %}
+	  <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">
+         {{ forloop.counter }}
+	  </a></li>
+{% endfor %}
+
+
 {% if message.has_next %}
 
-<a href="?page={{ message.next_page_number }}">next</a>
-<a href="?page={{ message.paginator.num_page }}">Last &raquo</a>
+<li class="page-item"><a class="page-link" href="?page={{ message.next_page_number }}">next</a></li>
+<li class="page-item"><a class="page-link" href="?page={{ message.paginator.num_page }}">Last &raquo</a></li>
 
 {% endif %}
-
+      </ul>
+</nav>
 {% endblock %}
