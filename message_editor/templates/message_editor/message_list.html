@@ -2,7 +2,9 @@
 {% block content %}
 
 <table class = table table-striped table-hover table-bordered >
-	<tr><td><h1>Messages</h1></td> <td><a href="{% url 'test-data' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Load user data</a></td></tr>
+	<tr><td><h1>Messages</h1></td> <td><a href="{% url 'test-data' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Load user data</a></td>
+		<td><a href="{% url 'test-users' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Load users data</a></td>
+	</tr>
 	{% for message in message%}
             <tr>
 <td>

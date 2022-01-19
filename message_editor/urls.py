@@ -10,4 +10,5 @@ urlpatterns = [
    path('update_message/<id>', views.update_message, name='update-message'),
    path('delete_message/<id>', views.delete_message, name='delete-message'),
    path('test_data', views.test_data, name='test-data'),
+   path('test_users', views.test_users, name='test-users'),
 ]
