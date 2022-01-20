@@ -13,7 +13,7 @@ def index(request):
 
 def show_all_messages(request):
     data = Message.objects.all()
-    p = Paginator(Message.objects.all(),2)
+    p = Paginator(Message.objects.all(),10)
     page = request.GET.get('page')
     message = p.get_page(page)
     nums = "a" * message.paginator.num_pages
