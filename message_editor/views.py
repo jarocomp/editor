@@ -10,6 +10,8 @@ from django.core.paginator import Paginator
 def index(request):
     return render(request, "message_editor/message_list.html",{})
 
+def home(request):
+    return render(request, "message_editor/home.html",{})
 
 def show_all_messages(request):
     data = Message.objects.all()
@@ -19,7 +21,6 @@ def show_all_messages(request):
     nums = "a" * message.paginator.num_pages
     return render(request,'message_editor/message_list.html', {'data': data,'message':message, 'nums':nums})
 
-
 def search_message(request):
     if request.method== "POST":
         searched = request.POST['searched']
@@ -27,7 +28,6 @@ def search_message(request):
         return render(request,'message_editor/search_message.html', {'searched':searched, 'messages': messages})
     else:
         return render(request, 'message_editor/search_message.html', {})
-
 
 def show_message(request, id):
     message = Message.objects.get(pk = id)
@@ -56,7 +56,6 @@ def test_data(request):
         userId = user_data['userId'],
         title = user_data['title'],
         body = user_data['body']
-
     )
     data.save()
     return redirect('messages')

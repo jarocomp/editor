@@ -2,7 +2,6 @@ from django.db import models
 
 class Message(models.Model):
 
-
     id = models.PositiveIntegerField(primary_key=True)
     userId = models.IntegerField()
     title = models.CharField(max_length=200)

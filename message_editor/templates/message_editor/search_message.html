@@ -1,14 +1,13 @@
 {% extends 'message_editor/base.html' %}
 {% block content %}
 
-
 {% if searched %}
 <h1>Search message: {{searched}}</h1>
   {% for message in messages %}
-{{ message }}
 
+  {{ message }}
 
-{% endfor %}
+  {% endfor %}
 {% else %}
 <h1>You forget search message</h1>
 {% endif %}

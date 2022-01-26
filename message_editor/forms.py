@@ -19,5 +19,5 @@ class MessageForm(forms.ModelForm):
             'id': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'ID' }),
             'userId': forms.TextInput(attrs={'class':'form-control','placeholder': 'userID'}),
             'title': forms.TextInput(attrs={'class':'form-control','placeholder': 'title'}),
-             'body':forms.Textarea(attrs={'class':'form-control','placeholder':'body'})
+            'body':forms.Textarea(attrs={'class':'form-control','placeholder':'body'})
         }
