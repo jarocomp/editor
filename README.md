@@ -1,8 +1,7 @@
-#**Simple message editor
+# Simple message editor with Django framework
+
 <br/>
-##**Django
-<br/>
-At first instal Django framework
+
 
 ## Getting Started
 
