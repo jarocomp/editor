@@ -19,3 +19,7 @@ $ cd projectname/
 $ cp settings_custom.py.edit settings_custom.py
 $ python manage.py migrate
 $ python manage.py runserver
+
+## Features
+
+* Basic Django message editor (create message, show message, update message,etc).
