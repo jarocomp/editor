@@ -10,7 +10,7 @@ Setup project environment with [virtualenv](https://virtualenv.pypa.io) and [pip
 ```bash
 $ virtualenv project-env
 $ source project-env/bin/activate
-$ pip install -r https://raw.githubusercontent.com/jarocomp/editor/master/requirements.txt
+$ pip install -r https://github.com/jarocomp/editor/blob/master/requirements.txt
 
 
 # You may want to change the name `projectname`.
